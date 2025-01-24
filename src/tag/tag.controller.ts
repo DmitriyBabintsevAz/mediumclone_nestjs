@@ -1,5 +1,14 @@
+import { TagService } from './tag.service';
 /* eslint-disable prettier/prettier */
-import { Controller } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 
-@Controller('tag')
-export class TagController { }
+@Controller('tags')
+export class TagController {
+    constructor(private readonly tagService: TagService) {
+
+    }
+    @Get()
+    findAll() {
+        return this.tagService.findAll()
+    }
+}
